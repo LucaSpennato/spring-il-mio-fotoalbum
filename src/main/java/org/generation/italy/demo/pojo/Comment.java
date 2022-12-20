@@ -30,4 +30,45 @@ public class Comment {
 	@JoinColumn(nullable = true)
 	private Photo photo;
 	
+	public Comment() { }
+	
+	public Comment(String comment) { 
+		setComment(comment);
+	}
+	
+	public Comment(String comment, Photo p) { 
+		setComment(comment);
+		setPhoto(p);;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+	
+	@Override
+	public String toString() {
+		return getId() 
+				+ "\n" + getComment()
+				+ "\n" + getPhoto();
+	}
 }
