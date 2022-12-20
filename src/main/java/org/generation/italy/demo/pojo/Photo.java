@@ -63,6 +63,25 @@ public class Photo {
 		setCategories(categories);
 		
 	}
+	
+	public Photo(String title, String url) {
+		
+		setTitle(title);
+		setUrl(url);
+		
+	}
+	
+	public Photo(String title, String url ,boolean isVisible ,Set<Tag> tags, 
+			Set<Category> categories, List<Comment> comments) {
+		
+		setTitle(title);
+		setUrl(url);
+		setVisible(isVisible);
+		setTags(tags);
+		setCategories(categories);
+		setComments(comments);
+		
+	}
 
 	public Integer getId() {
 		return id;
