@@ -31,6 +31,10 @@ public class Tag {
 	
 	public Tag() { }
 	
+	public Tag(String name) {
+		setName(name);
+	}
+	
 	public Tag(String name, Set<Photo> photos) {
 		setName(name);
 		setPhotos(photos);

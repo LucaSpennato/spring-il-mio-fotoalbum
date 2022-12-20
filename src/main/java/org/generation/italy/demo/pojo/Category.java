@@ -30,6 +30,10 @@ public class Category {
 	
 	public Category() { }
 	
+	public Category(String name) {
+		setName(name);
+	}
+	
 	public Category(String name, Set<Photo> photos) {
 		setName(name);
 		setPhotos(photos);
