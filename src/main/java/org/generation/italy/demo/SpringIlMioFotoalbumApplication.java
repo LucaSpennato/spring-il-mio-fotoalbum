@@ -9,7 +9,9 @@ import org.aspectj.weaver.NewFieldTypeMunger;
 import org.generation.italy.demo.pojo.Category;
 import org.generation.italy.demo.pojo.Comment;
 import org.generation.italy.demo.pojo.Photo;
+import org.generation.italy.demo.pojo.Role;
 import org.generation.italy.demo.pojo.Tag;
+import org.generation.italy.demo.pojo.User;
 import org.generation.italy.demo.service.CategoryServ;
 import org.generation.italy.demo.service.CommentServ;
 import org.generation.italy.demo.service.PhotoServ;
@@ -139,15 +141,15 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 				true, tags1, cats1);
 		
 		Photo p2 = new Photo("Makin insta dude", 
-				"https://media-assets.wired.it/photos/623b0a250b209c0e26965c87/3:2/w_1620,h_1080,c_limit/Instagram%20preferiti%20seguiti.png",
+				"https://www.a-sapiens.it/wp-content/uploads/freshizer/a16b1d255483adaa88bf2ee4f4d277b4_Alla-scoperta-di-700-c-90.png",
 				true, tags2, cats2);
 		
-		Photo p3 = new Photo("Makin fb dude", 
-				"https://media-assets.wired.it/photos/623b0a250b209c0e26965c87/3:2/w_1620,h_1080,c_limit/Instagram%20preferiti%20seguiti.png",
+		Photo p3 = new Photo("Summer time", 
+				"https://media.cntraveler.com/photos/5ca2606227413200230736ae/master/pass/Summer-Travel_GettyImages-1028278382.jpg",
 				true, tags3, cats3);
 		
-		Photo p4 = new Photo("Makin meta man", 
-				"https://media-assets.wired.it/photos/623b0a250b209c0e26965c87/3:2/w_1620,h_1080,c_limit/Instagram%20preferiti%20seguiti.png",
+		Photo p4 = new Photo("Christmas vibes", 
+				"https://cdn.mos.cms.futurecdn.net/8Zw7hWD5ZaquyftsRbEmof-1200-80.jpg",
 				true, tags4, cats4);
 		
 		photoS.savePhoto(p1);
@@ -189,7 +191,17 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		comS.saveComment(co11);
 		comS.saveComment(co12);
 		
+		Role r1 = new Role("user");
+		Role r2 = new Role("admin");
 		
+		roleS.save(r1);
+		roleS.save(r2);
+		
+		User u1 = new User("Gianni Fantoni", "{noop}giannipws", r1);
+		User u2 = new User("Gianna Fantoni", "{noop}giannipws", r2);
+		
+		userS.save(u1);
+		userS.save(u2);
 		
 	}
 
