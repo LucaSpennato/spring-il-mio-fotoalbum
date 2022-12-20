@@ -133,6 +133,7 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		cats4.add(cat4);
 		cats4.add(cat1);
 		
+		
 		Photo p1 = new Photo("Makin insta", 
 				"https://media-assets.wired.it/photos/623b0a250b209c0e26965c87/3:2/w_1620,h_1080,c_limit/Instagram%20preferiti%20seguiti.png",
 				true, tags1, cats1);
@@ -153,6 +154,43 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		photoS.savePhoto(p2);
 		photoS.savePhoto(p3);
 		photoS.savePhoto(p4);
+		
+		Photo f1 = photoS.findById(1).get();
+		Photo f2 = photoS.findById(2).get();
+		Photo f3 = photoS.findById(3).get();
+		Photo f4 = photoS.findById(4).get();
+		
+		Comment co1 = new Comment("Doing great man", f1);
+		Comment co2 = new Comment("Keep it up dude", f1);
+		Comment co3 = new Comment("*click* Noice", f1);
+		
+		Comment co4 = new Comment("Cool!", f2);
+		Comment co5 = new Comment("wat dis", f2);
+		Comment co6 = new Comment("chad", f2);
+		
+		Comment co7 = new Comment("w human", f3);
+		Comment co8 = new Comment("wooo cool", f3);
+		Comment co9 = new Comment("Repost this on *cool spam page*", f3);
+		
+		Comment co10 = new Comment("yo man", f4);
+		Comment co11 = new Comment("looks nice", f4);
+		Comment co12 = new Comment("not that bad", f4);
+		
+		comS.saveComment(co1);
+		comS.saveComment(co2);
+		comS.saveComment(co3);
+		comS.saveComment(co4);
+		comS.saveComment(co5);
+		comS.saveComment(co6);
+		comS.saveComment(co7);
+		comS.saveComment(co8);
+		comS.saveComment(co9);
+		comS.saveComment(co10);
+		comS.saveComment(co11);
+		comS.saveComment(co12);
+		
+		
+		
 	}
 
 }
