@@ -1,5 +1,6 @@
 package org.generation.italy.demo.pojo;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -26,7 +27,7 @@ public class Category {
 	private String name;
 	
 	@ManyToMany(mappedBy = "categories")
-	private Set<Photo> photos;
+	private List<Photo> photos;
 	
 	public Category() { }
 	
@@ -34,7 +35,7 @@ public class Category {
 		setName(name);
 	}
 	
-	public Category(String name, Set<Photo> photos) {
+	public Category(String name, List<Photo> photos) {
 		setName(name);
 		setPhotos(photos);
 	}
@@ -52,7 +53,7 @@ public class Category {
 		return name;
 	}
 
-	public Set<Photo> getPhotos() {
+	public List<Photo> getPhotos() {
 		return photos;
 	}
 
@@ -64,7 +65,7 @@ public class Category {
 		this.name = name;
 	}
 
-	public void setPhotos(Set<Photo> photos) {
+	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
 	}
 	

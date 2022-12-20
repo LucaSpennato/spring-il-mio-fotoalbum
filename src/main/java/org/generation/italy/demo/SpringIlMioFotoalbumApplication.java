@@ -141,7 +141,7 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 				true, tags1, cats1);
 		
 		Photo p2 = new Photo("Makin insta dude", 
-				"https://www.a-sapiens.it/wp-content/uploads/freshizer/a16b1d255483adaa88bf2ee4f4d277b4_Alla-scoperta-di-700-c-90.png",
+				"https://atraksolutions.it/wp-content/uploads/java-code-with-logo-Feature_1290x688_MS.jpg",
 				true, tags2, cats2);
 		
 		Photo p3 = new Photo("Summer time", 
@@ -197,8 +197,8 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		roleS.save(r1);
 		roleS.save(r2);
 		
-		User u1 = new User("Gianni Fantoni", "{noop}giannipws", r1);
-		User u2 = new User("Gianna Fantoni", "{noop}giannipws", r2);
+		User u1 = new User("Gianni", "{noop}gianni", r1);
+		User u2 = new User("Gianna", "{noop}gianna", r2);
 		
 		userS.save(u1);
 		userS.save(u2);

@@ -1,7 +1,8 @@
 package org.generation.italy.demo.pojo;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +28,7 @@ public class Tag {
 	private String name;
 	
 	@ManyToMany(mappedBy = "tags")
-	private Set<Photo> photos;
+	private List<Photo> photos;
 	
 	public Tag() { }
 	
@@ -35,7 +36,7 @@ public class Tag {
 		setName(name);
 	}
 	
-	public Tag(String name, Set<Photo> photos) {
+	public Tag(String name, List<Photo> photos) {
 		setName(name);
 		setPhotos(photos);
 	}
@@ -53,7 +54,7 @@ public class Tag {
 		return name;
 	}
 
-	public Set<Photo> getPhotos() {
+	public List<Photo> getPhotos() {
 		return photos;
 	}
 
@@ -65,7 +66,7 @@ public class Tag {
 		this.name = name;
 	}
 
-	public void setPhotos(Set<Photo> photos) {
+	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
 	}
 	
