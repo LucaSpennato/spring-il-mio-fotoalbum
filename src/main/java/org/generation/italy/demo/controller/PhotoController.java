@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,10 +51,14 @@ public class PhotoController {
 		List<Tag> tags = tagS.findAll();
 		List<Category> categories = catS.findAll();
 		
+		for (Category category : categories) {
+			System.err.println(category);
+		}
+		
 		model.addAttribute("photo", new Photo());
 		
-		model.addAttribute("tags", tags);
-		model.addAttribute("categories",categories);
+		model.addAttribute("ts", tags);
+		model.addAttribute("cs",categories);
 		
 		return "photos/createPhoto";	
 	}
@@ -63,7 +68,7 @@ public class PhotoController {
 			BindingResult br, RedirectAttributes redAttr, Model model) {
 		
 		System.err.println("TEST---------------------------------------");
-		System.err.println(photo);
+		System.err.println(photo.isVisible());
 		
 		if(br.hasErrors()) {
 			
@@ -86,6 +91,32 @@ public class PhotoController {
 			
 			return "redirect:/admin/photo/create";
 		}
+		
+		return "redirect:/admin/photo";
+	}
+	@GetMapping("/edit/{id}")
+	public String editPhoto(Model model, @PathVariable("id")int id) {
+		
+		List<Tag> tags = tagS.findAll();
+		List<Category> categories = catS.findAll();
+		
+		Photo p = ps.findById(id).get();
+		
+		model.addAttribute("photo", p);
+		
+		model.addAttribute("ts", tags);
+		model.addAttribute("cs",categories);
+		
+		return "photos/editPhoto";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deletePhoto(@PathVariable("id") int id) {
+		
+		Photo p = ps.findById(id).get();
+		
+		ps.deletePhoto(p);
+		
 		
 		return "redirect:/admin/photo";
 	}
