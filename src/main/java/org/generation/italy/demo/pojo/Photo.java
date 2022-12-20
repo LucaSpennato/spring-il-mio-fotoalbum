@@ -6,6 +6,7 @@ import java.util.Set;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Value;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,13 +44,14 @@ public class Photo {
 	@Value("true")
 	private boolean isVisible;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private Set<Tag> tags;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private Set<Category> categories;
 	
 	@OneToMany(mappedBy = "photo", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@Nullable
 	private List<Comment> comments;
 	
 	public Photo() { }
@@ -138,6 +140,17 @@ public class Photo {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+	
+	@Override
+	public int hashCode() {
+		return getId();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Photo)) return false;
+		return obj.hashCode() == hashCode();
 	}
 
 	@Override
