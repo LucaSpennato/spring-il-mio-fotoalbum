@@ -87,6 +87,6 @@ public class Tag {
 	
 	@Override
 	public String toString() {
-		return getId() + " - " + getName() + " - " + getPhotos();
+		return getId() + " - " + getName();
 	}
 }

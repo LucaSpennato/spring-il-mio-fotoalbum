@@ -86,6 +86,6 @@ public class Category {
 	
 	@Override
 	public String toString() {
-		return getId()+ " - " +getName() + " - " + getPhotos();
+		return getId()+ " - " + getName();
 	}
 }
