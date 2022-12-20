@@ -26,7 +26,7 @@
 			<form th:action="@{/admin/photo/store}" method="POST"
 				th:object="${photo}" class="col-8 offset-2 mt-5">
 				
-				
+				<input type="number" th:field="*{id}" th:value="*{id}">
 			
 				<div class="input-group mb-3">
 				  <span class="input-group-text">Title</span>
@@ -41,13 +41,14 @@
 				<div class="input-group mb-3">
 				  <label class="input-group-text" for="inputGroupSelect01">Visibility</label>
 				  <select class="form-select" id="inputGroupSelect01">
-				    <option th:value="1"  th:field="*{visible}">Yes</option>
-				    <option th:value="0"  th:field="*{visible}">No</option>
+				    <option selected>Choose...</option>
+				    <option value="0"  th:field="*{visible}">Yes</option>
+				    <option value="1"  th:field="*{visible}">No</option>
 				  </select>
 				</div>
 				
 				<div class="row">
-					
+				
 					<div class="col-5">
 						<div class="form-check form-switch">
 						  <h6>Tags:</h6>
@@ -69,7 +70,7 @@
 						  </div>
 						</div>
 					</div>
-					
+						
 				</div>
 			
 				<button type="submit" class="btn btn-success">Create</button>
