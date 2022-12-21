@@ -1,6 +1,8 @@
 package org.generation.italy.demo.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,6 +30,7 @@ public class Comment {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(nullable = true)
+	@JsonIgnore
 	private Photo photo;
 	
 	public Comment() { }

@@ -3,6 +3,7 @@ package org.generation.italy.demo.pojo;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +29,7 @@ public class Tag {
 	private String name;
 	
 	@ManyToMany(mappedBy = "tags")
+	@JsonIgnore
 	private List<Photo> photos;
 	
 	public Tag() { }
