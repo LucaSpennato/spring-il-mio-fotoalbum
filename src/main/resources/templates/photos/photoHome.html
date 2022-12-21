@@ -40,7 +40,9 @@
 			  	
 			  	<hr>
 			  	<h6 class="ccard-subtitle mb-2 text-muted">[[*{tags.size()}]] Tags</h6>
-			    
+			    <span class="card-text" th:each="t : *{tags}" th:object="${t}">
+			    	#[[*{name}]] 
+			    </span>
 			    <hr>
 			  	<h6 class="ccard-subtitle mb-2 text-muted">[[ *{categories.size()} ]] Categories</h6>
 			    

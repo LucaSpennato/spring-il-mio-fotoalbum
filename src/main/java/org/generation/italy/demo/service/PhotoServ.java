@@ -30,8 +30,8 @@ public class PhotoServ {
 		return ps.findById(id);
 	}
 	
-	public List<Photo> findByTitle(String needle){
-		return ps.findByTitleContainingIgnoreCase(needle);
+	public List<Photo> findByTitle(String needle, String title){
+		return ps.findByTagsNameContainingIgnoreCaseOrTitleContainingIgnoreCase(needle, title);
 	}
 	
 }

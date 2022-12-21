@@ -36,9 +36,9 @@ public class PhotoController {
 	private CategoryServ catS;
 	
 	@GetMapping("/home")
-	public String Search(@RequestParam(name="query", required=false) String query, Model model) {
-		
-		
+	public String Search(
+			@RequestParam(name="query", required=false) String query,
+			Model model) {
 		List<Photo> photos = new ArrayList<>();
 		
 		if(query == null) {
@@ -46,7 +46,8 @@ public class PhotoController {
 		}else {
 			model.addAttribute("q", true);
 			model.addAttribute("query", query);
-			photos = ps.findByTitle(query);
+			photos = ps.findByTitle(query,query);
+
 		}
 		
 		model.addAttribute("photos", photos);
