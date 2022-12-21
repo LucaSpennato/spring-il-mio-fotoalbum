@@ -140,6 +140,16 @@ public class CategoriesController {
 		return "categories/editCategory";
 	}
 	
+	@GetMapping("/show/{id}")
+	public String showCategory(Model model, @PathVariable("id")int id) {
+				
+		Category c = sv.findCategoryByIdWithPhoto(id);
+		
+		model.addAttribute("cat", c);
+		
+		return "categories/showCategory";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String deleteCategory(@PathVariable("id")int id) {
 		
