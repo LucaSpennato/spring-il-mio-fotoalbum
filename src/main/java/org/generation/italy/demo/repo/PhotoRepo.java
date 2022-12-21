@@ -11,4 +11,5 @@ public interface PhotoRepo extends JpaRepository<Photo, Integer>{
 
 	public List<Photo> findByTitleContainingIgnoreCase(String needle);
 	public List<Photo> findByTagsNameContainingIgnoreCaseOrTitleContainingIgnoreCase(String needle, String title);
+	public List<Photo> findByIsVisibleTrue();
 }
