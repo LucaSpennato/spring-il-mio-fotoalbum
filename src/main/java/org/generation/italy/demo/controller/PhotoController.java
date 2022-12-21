@@ -1,8 +1,8 @@
 package org.generation.italy.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.midi.SysexMessage;
 
 import org.generation.italy.demo.pojo.Category;
 import org.generation.italy.demo.pojo.Photo;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
@@ -35,10 +35,19 @@ public class PhotoController {
 	@Autowired
 	private CategoryServ catS;
 	
-	@GetMapping
-	public String getPhotoHome(Model model) {
+	@GetMapping("/home")
+	public String Search(@RequestParam(name="query", required=false) String query, Model model) {
 		
-		List<Photo> photos = ps.findAll();
+		
+		List<Photo> photos = new ArrayList<>();
+		
+		if(query == null) {
+			photos = ps.findAll();
+		}else {
+			model.addAttribute("q", true);
+			model.addAttribute("query", query);
+			photos = ps.findByTitle(query);
+		}
 		
 		model.addAttribute("photos", photos);
 		
@@ -50,11 +59,7 @@ public class PhotoController {
 		
 		List<Tag> tags = tagS.findAll();
 		List<Category> categories = catS.findAll();
-		
-		for (Category category : categories) {
-			System.err.println(category);
-		}
-		
+
 		model.addAttribute("photo", new Photo());
 		
 		model.addAttribute("ts", tags);
