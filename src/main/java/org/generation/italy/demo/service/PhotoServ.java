@@ -26,7 +26,7 @@ public class PhotoServ {
 		return ps.findAll();
 	}
 	
-	public List<Photo> findAllTrue(){
+	public List<Photo> findAllWhereVisibleTrue(){
 		return ps.findByIsVisibleTrue();
 	}
 	

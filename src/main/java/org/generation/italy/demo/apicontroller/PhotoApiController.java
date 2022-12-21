@@ -21,7 +21,7 @@ public class PhotoApiController {
 	@GetMapping("/all")
 	public List<Photo> getAllPhoto() {
 		
-		List<Photo> photos = ps.findAllTrue();
+		List<Photo> photos = ps.findAllWhereVisibleTrue();
 		
 		return photos;
 	}
