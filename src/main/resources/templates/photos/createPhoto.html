@@ -10,74 +10,12 @@
 	<div class="container-fluid p-0">
 		<header th:insert="fragments/headerFrag :: header"></header>
 	</div>
+	
+	
 	<div class="container">
-	
-		<div th:if="${errors}">
-			<div>Errors:</div>
-			<ul>
-				<li th:each="e : ${errors}" th:object="${e}">
-					[[ *{defaultMessage} ]]
-				</li>
-			</ul>
-		</div>
-	
-		<div class="row">
-			
-			<form th:action="@{/admin/photo/store}" method="POST"
-				th:object="${photo}" class="col-8 offset-2 mt-5">
-				
-				
-			
-				<div class="input-group mb-3">
-				  <span class="input-group-text">Title</span>
-				  <input type="text" class="form-control" name="title" th:field="*{title}">
-				</div>
-				
-				<div class="input-group mb-3">
-				  <span class="input-group-text">Photo url</span>
-				  <input type="text" class="form-control" name="url" th:field="*{url}">
-				</div>
-				
-				<div class="input-group mb-3">
-				  <label class="input-group-text" for="inputGroupSelect01">Visibility</label>
-				  <select class="form-select" id="inputGroupSelect01">
-				    <option th:value="1"  th:field="*{visible}">Yes</option>
-				    <option th:value="0"  th:field="*{visible}">No</option>
-				  </select>
-				</div>
-				
-				<div class="row">
-					
-					<div class="col-5">
-						<div class="form-check form-switch">
-						  <h6>Tags:</h6>
-						  <div th:each="tag : ${ts}" th:object="${tag}">
-						  	<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" 
-						  		th:value="*{id}" th:field="${photo.tags}" name="tags">
-						  	<label class="form-check-label" for="flexSwitchCheckDefault">[[*{name}]]</label>
-						  </div>
-						</div>
-					</div>
-					
-					<div class="col-5">
-						<div class="form-check form-switch">
-						  <h6>Categories:</h6>
-						  <div th:each="category : ${cs}" th:object="${category}">
-						  	<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" 
-						  		th:value="*{id}" th:field="${photo.categories}" name="category">
-						  	<label class="form-check-label" for="flexSwitchCheckDefault">[[*{name}]]</label>
-						  </div>
-						</div>
-					</div>
-					
-				</div>
-			
-				<button type="submit" class="btn btn-success">Create</button>
-			</form>
-			
-		</div>
-
-	</div>
+		<div th:insert="fragments/errorsFrag :: errors"></div>
+	</div>		
+	<div th:insert="fragments/formFrag :: photoForm('Create')"></div>
 
 </body>
 </html>

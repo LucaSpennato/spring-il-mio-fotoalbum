@@ -67,9 +67,6 @@ public class PhotoController {
 	public String storePhoto(@Valid @ModelAttribute("photo") Photo photo,
 			BindingResult br, RedirectAttributes redAttr, Model model) {
 		
-		System.err.println("TEST---------------------------------------");
-		System.err.println(photo.isVisible());
-		
 		if(br.hasErrors()) {
 			
 			redAttr.addFlashAttribute("errors", br.getAllErrors());
@@ -85,7 +82,7 @@ public class PhotoController {
 			
 		}catch(Exception e) {
 
-			redAttr.addFlashAttribute("exception", e.getMessage() );
+			redAttr.addFlashAttribute("exception", "Il nome inserito è già esistente." );
 			
 			model.addAttribute("photo",photo);
 			

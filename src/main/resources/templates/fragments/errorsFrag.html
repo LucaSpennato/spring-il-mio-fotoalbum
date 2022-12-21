@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	
+	<div class="row text-danger my-3 m-auto" th:fragment="errors">
+		<h5 th:if="${errors}">Errors:</h5>
+    
+	    <ul>
+			<li
+	    		th:each="error : ${errors}"
+	    		th:object="${error}"
+	    		th:text="|*{defaultMessage}|">
+	    	</li>
+	    	<li th:if="${exception}">
+				[[ ${exception} ]]
+			</li>
+		</ul>
+	</div>
+	
+
+</body>
+</html>
