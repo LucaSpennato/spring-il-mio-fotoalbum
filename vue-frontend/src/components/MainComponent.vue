@@ -4,7 +4,7 @@
   <div class="row my-5">
 
     <PostComponent v-for="photo in photos" :key="photo.id" 
-      :post="photo" @emitComment=" getCommentPost"/>
+      :post="photo" @emitComment="getCommentPost"/>
 
   </div>
 
@@ -38,11 +38,31 @@ export default {
   data(){
     return{
       photos: {},
+      
     }
   },
   methods:{
+    getPhotoIndexByid(id){
+
+      for (let i = 0; i < this.photos.length; i++) {
+        let photo = this.photos[i] 
+        if(photo.id === id){
+          return i
+        }
+      }
+
+    },
     getCommentPost(param){
-      console.log(param)
+   
+      const { infos: { comment, id } } = param
+      const photoIndex = this.getPhotoIndexByid(id)
+     
+      axios.post(apiUrl + "/comment/" + id, comment)
+      .then(res=>{
+        this.photos[photoIndex].comments.push(res.data)
+      })
+      .catch(e => {console.error(e)})
+     
     },
     getAllPhoto(){
       axios.get(apiUrl + "/all")

@@ -41,7 +41,7 @@ public class Comment {
 	
 	public Comment(String comment, Photo p) { 
 		setComment(comment);
-		setPhoto(p);;
+		setPhoto(p);
 	}
 
 	public Integer getId() {

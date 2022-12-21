@@ -48,7 +48,7 @@ data() {
 },
 methods: {
     emitComment(id){
-        this.$emit("emitComment",    {infos: {comment: this.comt, id: id }} )
+        this.$emit("emitComment", {infos: {comment: this.comt, id: id }} )
         this.comt = ''
     }
 
