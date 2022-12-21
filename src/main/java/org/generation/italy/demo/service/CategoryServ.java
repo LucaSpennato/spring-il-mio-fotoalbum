@@ -35,6 +35,18 @@ public class CategoryServ {
 	}
 	
 	@Transactional
+	public List<Category> findAllCategoryByIdWithPhoto(){
+		
+		List<Category> categories = cr.findAll();
+		
+		for (Category c : categories) {
+			Hibernate.initialize(c.getPhotos());
+		}
+		
+		return categories;
+	}
+	
+	@Transactional
 	public Category findCategoryByIdWithPhoto(int id){
 		
 		Category cat = cr.findById(id).get();
