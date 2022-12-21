@@ -91,6 +91,7 @@ public class PhotoController {
 		
 		return "redirect:/admin/photo";
 	}
+	
 	@GetMapping("/edit/{id}")
 	public String editPhoto(Model model, @PathVariable("id")int id) {
 		
@@ -105,6 +106,16 @@ public class PhotoController {
 		model.addAttribute("cs",categories);
 		
 		return "photos/editPhoto";
+	}
+	
+	@GetMapping("/show/{id}")
+	public String showPhotoDetails(@PathVariable("id") int id, Model model) {
+		
+		Photo p = ps.findById(id).get();
+		
+		model.addAttribute("photo",p);
+		
+		return "photos/showPhoto";
 	}
 	
 	@GetMapping("/delete/{id}")

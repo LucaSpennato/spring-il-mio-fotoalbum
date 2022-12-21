@@ -26,31 +26,24 @@
 			  <img th:src="*{url}" class="card-img-top" th:alt="*{title}  + 's' + ' ' +  image" >
 			  <div class="card-body">
 			  	<h5 class="card-title">[[*{title}]]</h5>
-			  	<h6 class="card-subtitle text-muted">Is visible? 
-			  		<span th:text="*{isVisible} ? 'Yes' : 'No'"></span>
+			  	<h6 class="card-subtitle text-muted"> 
+			  		<span th:text="*{isVisible} ? 'Visible' : 'Non visible'"></span>
 			  	</h6>
 			  	
 			  	<hr>
-			  	<h6 class="ccard-subtitle mb-2 text-muted">Tags:</h6>
-			  	<span class="card-text" th:each="t : *{tags}" th:object="${t}">
-			    	#[[*{name}]] 
-			    </span>
+			  	<h6 class="ccard-subtitle mb-2 text-muted">[[*{tags.size()}]] Tags:</h6>
 			    
 			    <hr>
-			  	<h6 class="ccard-subtitle mb-2 text-muted">Categories:</h6>
-			  	<span class="card-text" th:each="c : *{categories}" th:object="${c}">
-			    	-[[*{name}]] 
-			    </span>
+			  	<h6 class="ccard-subtitle mb-2 text-muted">[[ *{categories.size()} ]] Categories</h6>
 			    
 			    <hr>
 			    <h6 class="ccard-subtitle mb-2 text-muted">[[*{comments.size()}]] Comments</h6>
-			    <p class="card-text" th:each="c : *{comments}" th:object="${c}">
-			    	[[*{comment}]]
-			    </p>
 			  </div>
-			  <div>
+			  <div class="mb-3">
 			  	<h6>Actions</h6>
 			  	<a class="btn btn-danger" th:href="@{/admin/photo/delete/{id} (id = *{id})}">Delete</a>
+			  	<a class="btn btn-success" th:href="@{/admin/photo/edit/{id} (id = *{id})}">Edit</a>
+			  	<a class="btn btn-primary" th:href="@{/admin/photo/show/{id} (id = *{id})}">Details</a>
 			  </div>
 			</div>
 		
