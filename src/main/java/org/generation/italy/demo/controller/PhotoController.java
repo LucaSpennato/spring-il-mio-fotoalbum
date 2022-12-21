@@ -132,7 +132,7 @@ public class PhotoController {
 		ps.deletePhoto(p);
 		
 		
-		return "redirect:/admin/photo";
+		return "redirect:/admin/photo/home";
 	}
 	
 	
