@@ -68,7 +68,6 @@ public class Comment {
 	@Override
 	public String toString() {
 		return getId() 
-				+ "\n" + getComment()
-				+ "\n" + getPhoto();
+				+ "\n" + getComment();
 	}
 }
