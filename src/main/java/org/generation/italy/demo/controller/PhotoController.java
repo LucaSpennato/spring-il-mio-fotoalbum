@@ -95,7 +95,7 @@ public class PhotoController {
 			return "redirect:/admin/photo/create";
 		}
 		
-		return "redirect:/admin/photo";
+		return "redirect:/admin/photo/home";
 	}
 	
 	@GetMapping("/edit/{id}")

@@ -8,19 +8,7 @@
 <body>
 
 	<div class="container">
-	
-		<div th:if="${errors}">
-			<div>Errors:</div>
-			<ul>
-				<li th:each="e : ${errors}" th:object="${e}">
-					[[ *{defaultMessage} ]]
-				</li>
-				<li>
-					[[ ${exception} ]]
-				</li>
-			</ul>
-		</div>
-	
+
 		<div class="row">
 			
 			<form 
