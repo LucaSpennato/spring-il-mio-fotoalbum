@@ -67,9 +67,6 @@ methods: {
         return comments.sort((o1,o2) => o2.id - o1.id)
     },
 },
-created(){
-    this.randomColor()
-}
 }
 </script>
 
