@@ -10,12 +10,12 @@
             {{ post.description }}
         </div>
         <div class="my-2 border-top border-dark">
-            <span v-for="tag in post.tags" :key="tag.id" class="text-secondary">
+            <span v-for="tag in post.tags" :key="tag.id" class="tags">
             #{{ tag.name }}
         </span>
         </div>
         <div class="my-2 border-top border-dark">
-            <span v-for="cat in post.categories" :key="cat.id" class="text-secondary">
+            <span v-for="cat in post.categories" :key="cat.id" class="category">
                 -{{ cat.name }}
             </span>
         </div>
@@ -37,7 +37,6 @@
             <button class="btn btn-success" @click="emitComment(post.id)">Send</button>
         </div>
     </div>
-
   </div>
 </template>
 
@@ -54,9 +53,10 @@ props:{
 data() {
     return {
         comt: '',
-        postIndex: -1
+        postIndex: -1,
     }
 },
+
 methods: {
     emitComment(id){
         this.$emit("emitComment", {infos: {comment: this.comt, id: id }} )
@@ -67,11 +67,21 @@ methods: {
         return comments.sort((o1,o2) => o2.id - o1.id)
     },
 },
+created(){
+    this.randomColor()
+}
 }
 </script>
 
 <style lang="scss" scoped>
 @import 'Bootstrap';
+.tags{
+    color: blue;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+}
 .comments{
     height: 8rem;
     overflow-y: scroll;
