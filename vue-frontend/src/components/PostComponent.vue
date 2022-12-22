@@ -23,7 +23,7 @@
             Close comments
         </div>
 
-       <div v-show="postIndex == post.id">
+       <div v-show="postIndex == post.id" class="comments">
         <div v-for="cm in reverseComments(post.comments)" :key="cm.id" >
             {{ cm.comment }}
         </div>
@@ -69,7 +69,12 @@ methods: {
 
 <style lang="scss" scoped>
 @import 'Bootstrap';
-
+.comments{
+    height: 8rem;
+    overflow-y: scroll;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
 .viewComments, .closeComments{
     &:hover{
         cursor: pointer;
