@@ -55,11 +55,11 @@ public class PhotoApiController {
 	}
 	
 	@PostMapping("/comment/{id}")
-	public Comment storeComment(@Valid @RequestBody String c, 
+	public Comment storeComment(@Valid @RequestBody Comment c, 
 			@PathVariable("id")int id) {
-		
+
 		Photo p = ps.findById(id).get();
-		Comment comment = new Comment(c, p);
+		Comment comment = new Comment(c.getComment(), p);
 		
 		Comment cmnt = cs.saveComment(comment);
 		
