@@ -6,6 +6,9 @@
         <div class="fs-2">
             {{ post.title }}
         </div>
+        <div class="fs-6 text-muted mb-2">
+            {{ post.description }}
+        </div>
         <div class="my-2 border-top border-dark">
             <span v-for="tag in post.tags" :key="tag.id" class="text-secondary">
             #{{ tag.name }}
@@ -28,8 +31,8 @@
             {{ cm.comment }}
         </div>
        </div>
-        <div class="mt-3">
-            <input type="text" class="border rounded me-2 py-1" v-model.trim="comt"
+        <div class="mt-3 d-flex justify-content-between">
+            <input type="text" class="border rounded me-2 py-1 w-100" v-model.trim="comt"
                 placeholder="Write a comment..." @keyup.enter="emitComment(post.id)">
             <button class="btn btn-success" @click="emitComment(post.id)">Send</button>
         </div>

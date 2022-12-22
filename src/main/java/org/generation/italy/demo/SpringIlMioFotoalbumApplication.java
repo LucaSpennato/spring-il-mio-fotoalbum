@@ -136,9 +136,9 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		cats4.add(cat1);
 		
 		
-		Photo p1 = new Photo("Makin insta", 
-				"https://media-assets.wired.it/photos/623b0a250b209c0e26965c87/3:2/w_1620,h_1080,c_limit/Instagram%20preferiti%20seguiti.png",
-				true, tags1, cats1);
+		Photo p1 = new Photo("Makin insta", "https://media-assets.wired.it/photos/623b0a250b209c0e26965c87/3:2/w_1620,h_1080,c_limit/Instagram%20preferiti%20seguiti.png",
+				"Makin instagram as final project!", true, tags1, cats1);
+
 		
 		Photo p2 = new Photo("Makin insta dude", 
 				"https://atraksolutions.it/wp-content/uploads/java-code-with-logo-Feature_1290x688_MS.jpg",

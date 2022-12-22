@@ -42,9 +42,10 @@ public class Photo {
 	@Lob
 	private String url;
 	
-	@Column
+	@Column(length=5000)
 	@Nullable
 	@Lob
+	@Size(max=5000, message="La descrizione può essere massimo di 5000 caratteri.")
 	private String description;
 	
 	@Column
@@ -85,6 +86,19 @@ public class Photo {
 		
 		setTitle(title);
 		setUrl(url);
+		setVisible(isVisible);
+		setTags(tags);
+		setCategories(categories);
+		setComments(comments);
+		
+	}
+	
+	public Photo(String title, String url, String description, boolean isVisible ,Set<Tag> tags, 
+			Set<Category> categories) {
+		
+		setTitle(title);
+		setUrl(url);
+		setDescription(description);
 		setVisible(isVisible);
 		setTags(tags);
 		setCategories(categories);
