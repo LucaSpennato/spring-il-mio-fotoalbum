@@ -45,6 +45,7 @@ public class CategoriesController {
 		
 		Category c = new Category();
 		
+		model.addAttribute("ps", photoS.findAll());
 		
 		model.addAttribute("cat", c);
 	
@@ -53,7 +54,7 @@ public class CategoriesController {
 	}
 	
 	@PostMapping("/store")
-	public String storeCategory(@Valid @ModelAttribute("category") Category cat,
+	public String storeCategory(@Valid @ModelAttribute("cat") Category cat,
 			BindingResult br, RedirectAttributes redAttr, Model model) {
 		
 		if(br.hasErrors()) {
@@ -62,16 +63,26 @@ public class CategoriesController {
 			
 			model.addAttribute("cat",cat);
 			
-			return "redirect:/admin/photo/create";
+			return "redirect:/admin/categories/create";
 		}
 		
 		try {
+			sv.saveCategory(cat);
+			
+			System.err.println(cat.getId());
+			
+			List<Photo> photos = cat.getPhotos();
+			
+			for (Photo photo : photos) {
+				photo.getCategories().add(cat);
+				System.err.println(photo);
+			}
 			
 			sv.saveCategory(cat);
 			
 		}catch(Exception e) {
 
-			redAttr.addFlashAttribute("exception", "Il nome inserito è già esistente." );
+			redAttr.addFlashAttribute("exception", e.getMessage() );
 			
 			model.addAttribute("cat",cat);
 			
