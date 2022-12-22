@@ -38,7 +38,7 @@ export default {
   data(){
     return{
       photos: {},
-      
+      color: 'red',
     }
   },
   methods:{
@@ -57,9 +57,12 @@ export default {
       const { infos: { comment, id } } = param
       const photoIndex = this.getPhotoIndexByid(id)
      
-      axios.post(apiUrl + "/comment/" + id, comment)
+      const sendComment = { id: 0, comment : comment }
+
+      axios.post(apiUrl + "/comment/" + id, sendComment)
       .then(res=>{
-        this.photos[photoIndex].comments.push(res.data)
+        // unshift pusha in alto al contrario di .push
+        this.photos[photoIndex].comments.unshift(res.data)
       })
       .catch(e => {console.error(e)})
      
@@ -74,7 +77,6 @@ export default {
     },
 
     filterSearch(){
-      console.log(this.needle)
       axios.get(apiUrl + "/search",{params: {
         query: this.needle
       }})
@@ -82,7 +84,7 @@ export default {
         this.photos = res.data
       })
       .catch(e => {console.error(e)})
-    }
+    },
   },
   created(){
     this.getAllPhoto();
@@ -92,4 +94,5 @@ export default {
 
 <style lang="scss">
 @import "Bootstrap";
+
 </style>
