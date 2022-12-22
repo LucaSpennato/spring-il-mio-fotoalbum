@@ -43,6 +43,11 @@ public class Photo {
 	private String url;
 	
 	@Column
+	@Nullable
+	@Lob
+	private String description;
+	
+	@Column
 	@Value("true")
 	private boolean isVisible;
 	
@@ -85,6 +90,14 @@ public class Photo {
 		setCategories(categories);
 		setComments(comments);
 		
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Integer getId() {
