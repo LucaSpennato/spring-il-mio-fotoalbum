@@ -152,10 +152,15 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 				"https://cdn.mos.cms.futurecdn.net/8Zw7hWD5ZaquyftsRbEmof-1200-80.jpg",
 				true, tags4, cats4);
 		
+		Photo p5 = new Photo("Christmas time", 
+				"https://cdn.mos.cms.futurecdn.net/8Zw7hWD5ZaquyftsRbEmof-1200-80.jpg",
+				false, tags4, cats4);
+		
 		photoS.savePhoto(p1);
 		photoS.savePhoto(p2);
 		photoS.savePhoto(p3);
 		photoS.savePhoto(p4);
+		photoS.savePhoto(p5);
 		
 		Photo f1 = photoS.findById(1).get();
 		Photo f2 = photoS.findById(2).get();

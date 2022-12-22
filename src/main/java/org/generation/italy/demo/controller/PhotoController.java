@@ -46,7 +46,7 @@ public class PhotoController {
 		}else {
 			model.addAttribute("q", true);
 			model.addAttribute("query", query);
-			photos = ps.findByTitle(query,query);
+			photos = ps.findByTitleOrTag(query,query);
 
 		}
 		

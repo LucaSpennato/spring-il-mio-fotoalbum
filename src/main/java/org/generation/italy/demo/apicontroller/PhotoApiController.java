@@ -44,11 +44,10 @@ public class PhotoApiController {
 			@RequestParam(name="query", required=false) String query) {
 		List<Photo> photos = new ArrayList<>();
 		
-		if(query == null) {
+		if(query.isBlank()) {
 			photos = ps.findAllWhereVisibleTrue();
 		}else {
-			photos = ps.findByTitle(query,query);
-
+			photos = ps.findByTitleOrTagVisible(query,query);	
 		}
 		
 		return photos;

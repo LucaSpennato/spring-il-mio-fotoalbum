@@ -34,8 +34,11 @@ public class PhotoServ {
 		return ps.findById(id);
 	}
 	
-	public List<Photo> findByTitle(String needle, String title){
+	public List<Photo> findByTitleOrTag(String needle, String title){
 		return ps.findByTagsNameContainingIgnoreCaseOrTitleContainingIgnoreCase(needle, title);
 	}
 	
+	public List<Photo> findByTitleOrTagVisible(String needle, String title){
+		return ps.findByTitleContainingIgnoreCaseAndIsVisibleTrueOrTagsNameContainingIgnoreCaseAndIsVisibleTrue(needle, title);
+	}
 }
