@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="col-6 border border-rounded my-3 p-4 m-auto">
+    <div class="col-11 col-lg-6 border border-rounded my-3 p-4 m-auto">
         <img :src="post.url" :alt="post.title + ` 's photo` " class="img-fluid">
         <div class="fs-2">
             {{ post.title }}

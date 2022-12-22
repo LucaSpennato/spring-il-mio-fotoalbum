@@ -5,7 +5,9 @@
 
     <PostComponent v-for="photo in photos" :key="photo.id" 
       :post="photo" @emitComment="getCommentPost"/>
-
+    <div class="fs-2" v-if="photos">
+      Non ci sono post.
+    </div>
   </div>
 
 </div>

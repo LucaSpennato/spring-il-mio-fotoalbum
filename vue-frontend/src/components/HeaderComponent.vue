@@ -6,7 +6,7 @@
             <h3 class="col-4">
                 <a class="navbar-brand" href="/admin/photo/home">FotoAlbum</a>
             </h3>
-            <div class="col-4 d-flex" role="search">
+            <div class="col-12 col-md-4 d-flex" role="search">
                 <input class="form-control mx-2" type="search" placeholder="Search" @keyup="emitNeedle()" v-model.trim="needle">
                 <button class="btn btn-outline-success" type="submit" @click="emitNeedle()">Search</button>
             </div>
