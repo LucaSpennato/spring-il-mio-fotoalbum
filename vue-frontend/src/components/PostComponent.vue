@@ -16,12 +16,18 @@
                 -{{ cat.name }}
             </span>
         </div>
-        <div>
-            {{ post.comments.length }} Comments
+        <div v-if="postIndex !== post.id" @click="postIndex = post.id" class="viewComments">
+            View all {{ post.comments.length }} Comments
         </div>
-        <div v-for="cm in reverseComments(post.comments)" :key="cm.id">
+        <div class="closeComments" v-else @click="postIndex = -1">
+            Close comments
+        </div>
+
+       <div v-show="postIndex == post.id">
+        <div v-for="cm in reverseComments(post.comments)" :key="cm.id" >
             {{ cm.comment }}
         </div>
+       </div>
         <div class="mt-3">
             <input type="text" class="border rounded me-2 py-1" v-model.trim="comt"
                 placeholder="Write a comment..." @keyup.enter="emitComment(post.id)">
@@ -33,6 +39,7 @@
 </template>
 
 <script>
+
 export default {
 name: "PostComponent",
 props:{
@@ -43,23 +50,32 @@ props:{
 },
 data() {
     return {
-        comt: ''
+        comt: '',
+        postIndex: -1
     }
 },
 methods: {
     emitComment(id){
         this.$emit("emitComment", {infos: {comment: this.comt, id: id }} )
         this.comt = ''
+        this.postIndex = id
     },
     reverseComments(comments){
         return comments.sort((o1,o2) => o2.id - o1.id)
-    }
-    
+    },
 },
 }
 </script>
 
 <style lang="scss" scoped>
 @import 'Bootstrap';
+
+.viewComments, .closeComments{
+    &:hover{
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+    }
+}
 
 </style>

@@ -52,6 +52,9 @@ export default {
       }
 
     },
+    getPhotoIndexByidLambda(id){
+      return this.photos.findIndex(photo => photo.id == id)
+    },
     getCommentPost(param){
    
       const { infos: { comment, id } } = param
